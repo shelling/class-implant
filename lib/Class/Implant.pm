@@ -47,15 +47,19 @@ Class::Implant - Manipulating Mix-In and Inheritance of Packages from outside
   implant qw(Less::More);                 # mixing all methods from Less::More, 
                                           # like ruby 'include'
 
+
 =head1 DESCRIPTION
 
+Simply do mix-in [inheritance] in intuitive way
 
 =head2 EXPORT
 
-
+&implant()
 
 
 =head1 SEE ALSO
+
+
 
 Mention other useful documentation such as the documentation of
 related modules or operating system documentation (such as man pages
