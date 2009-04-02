@@ -1,0 +1,11 @@
+*~
+*.swp
+META.yml
+Makefile
+Makefile.PL
+Makefile.old
+inc/
+blib/
+.build
+Class-Implant-*/
+Class-Implant-*.tar.gz
