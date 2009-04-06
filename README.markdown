@@ -7,8 +7,11 @@ Manipulating mixin and inheritance outside of packages
 To install this module type the following:
 
    perl Makefile.PL
+
    make
+
    make test
+
    make install
 
 ## DEPENDENCIES
@@ -16,6 +19,7 @@ To install this module type the following:
 This module requires these other modules and libraries:
 
   Exporter
+
   Class::Inspector
 
 ## COPYRIGHT AND LICENCE
