@@ -18,14 +18,20 @@ sub implant (@) {
   my @class = @_;
 
   my $caller = caller;
+  my $target = $caller;
 
-  if ( defined($option->{inherit}) ) {
-      eval qq{ package $caller; use base qw(@class); } 
+ #if ( defined($option->{inherit}) ) {
+ #    eval qq{ package $caller; use base qw(@class); } 
+ #}
+
+  if (defined($option)) {
+      $target = ($option->{into} ? $option->{into} : $caller );
+      eval qq{ package $target; use base qw(@class); } if $option->{inherit};
   }
 
   for my $class (reverse @class) {
     for my $function (@{ Class::Inspector->functions($class) }) {
-      *{ $caller . "::" . $function } = \&{ $class . "::" . $function };
+      *{ $target . "::" . $function } = \&{ $class . "::" . $function };
     }
   }
 
