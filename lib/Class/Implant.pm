@@ -20,10 +20,6 @@ sub implant (@) {
   my $caller = caller;
   my $target = $caller;
 
- #if ( defined($option->{inherit}) ) {
- #    eval qq{ package $caller; use base qw(@class); } 
- #}
-
   if (defined($option)) {
       $target = ($option->{into} ? $option->{into} : $caller );
       eval qq{ package $target; use base qw(@class); } if $option->{inherit};
