@@ -24,7 +24,7 @@ This module requires these other modules and libraries:
 
 ## COPYRIGHT AND LICENCE
 
-#### Copyright (C) 2009 by shelling
+Copyright (C) 2009 by shelling
 
-#### MIT(X11) Licence
+MIT(X11) Licence
 
