@@ -1,4 +1,6 @@
-## Class-Implant
+# Class-Implant
+
+Manipulating mixin and inheritance outside of packages
 
 ## INSTALLATION
 
