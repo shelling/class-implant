@@ -1,4 +1,5 @@
 package Class::Implant;
+# ABSTRACT: Manipulating mixin and inheritance out of packages
 
 use 5.008008;
 use strict;
