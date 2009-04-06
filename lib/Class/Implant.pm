@@ -17,11 +17,10 @@ sub implant (@) {
   my $option = ( ref($_[-1]) eq "HASH" ? pop(@_) : undef );
   my @class = @_;
 
-  my $caller = caller;
-  my $target = $caller;
+  my $target = caller;
 
   if (defined($option)) {
-      $target = ($option->{into} ? $option->{into} : $caller );
+      $target = $option->{into} if defined($option->{into});
       eval qq{ package $target; use base qw(@class); } if $option->{inherit};
   }
 
