@@ -7,7 +7,7 @@ no  strict "refs";
 use warnings;
 use Class::Inspector;
 
-our $VERSION = '0.01_01';
+our $VERSION = '0.01';
 
 sub import {
   *{(caller)[0] . "::implant"} = \&implant;
@@ -36,10 +36,6 @@ sub implant (@) {
 1;
 __END__
 
-=head1 NAME
-
-Class::Implant - Manipulating Mix-In and Inheritance of Packages from outside
-
 =head1 SYNOPSIS
 
   package Cat;
@@ -53,7 +49,7 @@ Class::Implant - Manipulating Mix-In and Inheritance of Packages from outside
 
 =head1 DESCRIPTION
 
-Simply do mix-in [inheritance] in intuitive way
+Manipulating mixin and inheritance outside of packages
 
 =head2 EXPORT
 
@@ -62,16 +58,6 @@ Simply do mix-in [inheritance] in intuitive way
 
 =head1 SEE ALSO
 
-
-
-Mention other useful documentation such as the documentation of
-related modules or operating system documentation (such as man pages
-in UNIX), or any relevant external documentation such as RFCs or
-standards.
-
-If you have a mailing list set up for your module, mention it here.
-
-If you have a web site set up for your module, mention it here.
 
 =head1 AUTHOR
 
