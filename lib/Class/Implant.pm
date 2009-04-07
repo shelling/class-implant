@@ -61,11 +61,15 @@ or in classical way. just using caller as default target for implanting.
                                           # but present a verisimilitude simulation of inheritance in Ruby
 
 
-=head1 SYNTAX
+=head1 DESCRIPTION
 
-use Class::Implant;
+Class::Implant allow you manipulating mixin and inheritance outside of packages.
 
-implant @classes_for_injection, { options => value }
+syntax is like
+
+  use Class::Implant;
+
+  implant @classes_for_injection, { options => value }
 
 available options show as following.
 
@@ -85,9 +89,6 @@ this option is not available in 0.01
 
 this option is not available in 0.01
 
-=head1 DESCRIPTION
-
-Manipulating mixin and inheritance outside of packages
 
 =head2 EXPORT
 
