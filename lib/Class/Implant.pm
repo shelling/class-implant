@@ -25,15 +25,16 @@ sub implant (@) {
   }
 
   for my $class (reverse @class) {
-    for my $function (@{ Class::Inspector->functions($class) }) {
+    for my $function (@{ _get_methods($class) }) {
       *{ $target . "::" . $function } = \&{ $class . "::" . $function };
     }
   }
 
 }
 
+sub _get_methods { Class::Inspector->functions(shift) }
+
 1;
-__END__
 
 =head1 SYNOPSIS
 
@@ -54,18 +55,7 @@ Manipulating mixin and inheritance outside of packages
 
 &implant()
 
-
 =head1 SEE ALSO
 
+Class::Inspector
 
-=head1 AUTHOR
-
-shelling, E<lt>shelling@apple.comE<gt>
-
-=head1 COPYRIGHT AND LICENSE
-
-Copyright (C) 2009 by shelling
-
-MIT(X11) Licence
-
-=cut
