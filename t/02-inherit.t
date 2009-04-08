@@ -15,5 +15,5 @@ package main;
 use_ok("Bar", qw(hello world spam));
 
 $bar = Bar->new;
-isa_ok($bar, "Foo");
-isa_ok($bar, "Spam");
+isa_ok($bar, "Foo", "Bar is not a Foo\n");
+isa_ok($bar, "Spam", "Bar is not a Spam\n");
