@@ -4,12 +4,16 @@ use File::Basename;
 use lib dirname(__FILE__) . "/lib";
 use Foo;
 use Bar;
+use Spam;
 
 package Bar;
 use Class::Implant;
-implant qw(Foo), { inherit => 1 };
+implant qw(Foo Spam), { inherit => 1 };
 
 package main;
+
+use_ok("Bar", qw(hello world spam));
+
 $bar = Bar->new;
-use_ok("Bar", qw(hello world));
 isa_ok($bar, "Foo");
+isa_ok($bar, "Spam");
