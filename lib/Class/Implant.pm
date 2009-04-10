@@ -102,7 +102,9 @@ specify what methods you want to import
 
 =head2 match
 
-give a pattern to import methods which match this pattern
+give a pattern to import methods which match this pattern, for example,
+
+  implant qw(Foo Bar), { match => qr{wor\w+} }
 
 =head2 include
 
