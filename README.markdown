@@ -6,21 +6,38 @@ Manipulating mixin and inheritance outside of packages
 
 To install this module type the following:
 
-   perl Makefile.PL
+    perl Makefile.PL  
+    make  
+    make test  
+    make install
 
-   make
+## USAGE
 
-   make test
+There are two ways to use Class::Implant.
 
-   make install
+Classical way as follows.
+
+    packagg Cat;
+    use Class::Implant;
+
+    implant qw(Foo Bar Baz), { option hash ref };
+    \# import all methods from Foo, Bar, Baz into Cat
+
+Procudural way
+
+    packagg main;
+    use Class::Implant;
+
+    implant qw(Foo Baz Baz), { into => "Cat", match => qr{pattern} };
+
+
 
 ## DEPENDENCIES
 
 This module requires these other modules and libraries:
 
-  Exporter
-
-  Class::Inspector
+    Exporter
+    Class::Inspector
 
 ## COPYRIGHT AND LICENCE
 
