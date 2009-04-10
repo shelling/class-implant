@@ -7,11 +7,10 @@ no  strict "refs";
 use warnings;
 use Class::Inspector;
 
-our $VERSION = '0.01';
-
 sub import {
   *{(caller)[0] . "::implant"} = \&implant;
 }
+
 
 sub implant (@) {
   my $option = ( ref($_[-1]) eq "HASH" ? pop(@_) : undef );
@@ -20,19 +19,35 @@ sub implant (@) {
   my $target = caller;
 
   if (defined($option)) {
+  # options preprocessing
+
       $target = $option->{into} if defined($option->{into});
       eval qq{ package $target; use base qw(@class); } if $option->{inherit};
+
+      if (defined($option->{spec})) {
+        for (qw(match include exclude)) {
+          $option->{$_} = undef;
+        }
+      }
+
   }
 
+
   for my $class (reverse @class) {
-    for my $function (@{ _get_methods($class) }) {
+
+    my @methods = @{ get_methods($class) };
+    @methods = grep /$option->{match}/, @methods if $option->{match};
+
+    for my $function (@methods) {
       *{ $target . "::" . $function } = \&{ $class . "::" . $function };
     }
+
   }
 
 }
 
-sub _get_methods { Class::Inspector->functions(shift) }
+sub get_methods { Class::Inspector->functions(shift) }
+
 
 1;
 
@@ -81,6 +96,14 @@ target package for injection.
 
 give 1 or any value to mark the inheritance
 
+=head2 spec
+
+specify what methods you want to import
+
+=head2 match
+
+give a pattern to import methods which match this pattern
+
 =head2 include
 
 this option is not available in 0.01
@@ -90,7 +113,7 @@ this option is not available in 0.01
 this option is not available in 0.01
 
 
-=head2 EXPORT
+=head1 EXPORT
 
 implant()
 

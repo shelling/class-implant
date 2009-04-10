@@ -5,8 +5,10 @@ use lib qw(lib);
 
 
 package Foo::Bar;
-sub foo { "foo" }
-sub bar { "bar" }
+sub foo   { "foo" }
+sub bar   { "bar" }
+sub hello { "hello" }
+sub hill  { "hill" }
 
 
 package Less::More;
@@ -15,16 +17,23 @@ sub more { "more" }
 
 
 package Hello;
-use Class::Implant;
-use Data::Dumper;
-implant qw(Less::More Foo::Bar), { inherit => 1, exclude => [qw(import)] };
-sub isa { @ISA }
 
 
 package main;
-for (qw(foo bar less more)) {
-  eval qq{ print Hello::$_, "\n" };
+use Class::Implant;
+implant qw(Foo::Bar Less::More), { into => "Hello", match => qr{h\w+} };
+
+for (qw(foo bar less more hello hill)) {
+  eval qq{ print Hello->$_, "\n" };
 }
-print Hello::isa(), "\n";
+
+if ( Hello->can("foo") ) {
+  print "can_ok foo()\n";
+} else {
+  print "cannot_ok foo()\n";
+}
+
+print Hello->can("foo"), "\n";
+
 
 

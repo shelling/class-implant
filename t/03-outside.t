@@ -9,4 +9,4 @@ use Class::Implant;
 
 implant qw(Foo), { into => "Bar" };
 
-use_ok("Bar", qw(hello world));
+can_ok("Bar", qw(hello world));
