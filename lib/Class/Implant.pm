@@ -46,7 +46,7 @@ sub implant (@) {
 
 }
 
-sub get_methods { Class::Inspector->functions(shift) }
+sub get_methods { Class::Inspector->functions(shift) || [] }
 
 
 1;
