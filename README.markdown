@@ -53,6 +53,7 @@ This module requires these other modules and libraries:
 ## SEE ALSO
 
     UNIVERSAL::implant
+    Moose::Manual::Roles
 
 ## COPYRIGHT AND LICENCE
 
